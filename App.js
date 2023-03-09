@@ -33,7 +33,7 @@ export default function App() {
             options={({ navigation, route }) => {return {title: route.params.categoryId}}}
           />
           <Stack.Screen
-            name="MealsDetail"
+            name="MealDetail"
             component={MealDetailScreen}
           />
         </Stack.Navigator>

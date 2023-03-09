@@ -6,6 +6,7 @@ export default function MealItem({
   complexity,
   duration,
   affordability,
+  onPress
 }) {
   return (
     <View>
@@ -15,6 +16,7 @@ export default function MealItem({
           pressed ? styles.buttonPressed : null,
         ]}
         android_ripple={{ color: "#ccc" }}
+        onPress={onPress}
       >
         <View>
           <Image style={styles.itemImage} source={{ uri: imageUrl }} />

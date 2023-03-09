@@ -26,7 +26,12 @@ export default function MeasOverviewScreen({ route, navigation }) {
       duration: item.duration,
       affordability: item.affordability,
     };
-    return <MealItem {...mealItemProps} />;
+    function pressHander() {
+      navigation.navigate("MealDetail", {
+        itemId: item.id
+      });
+    }
+    return <MealItem {...mealItemProps} onPress={pressHander} />;
   }
 
   return (
