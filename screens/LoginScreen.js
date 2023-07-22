@@ -16,10 +16,12 @@ function LoginScreen() {
       const token = await login(email, password);
       authCtx.authenticate(token);
     } catch (error) {
-      Alert.alert("로그인 실패!", "계정을 확인하거나 잠시 후 재시도하세요.");
+      Alert.alert(
+        "Authentication failed!",
+        "Could not log you in. Please check your credentials or try again later!"
+      );
+      setIsAuthenticating(false);
     }
-
-    setIsAuthenticating(false);
   }
 
   if (isAuthenticating) {

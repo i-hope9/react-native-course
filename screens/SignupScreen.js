@@ -15,9 +15,12 @@ function SignupScreen() {
       const token = await createUser(email, password);
       authCtx.authenticate(token);
     } catch (error) {
-      Alert.alert("회원가입 실패!", "잠시 후 재시도하세요.");
+      Alert.alert(
+        "Authentication failed",
+        "Could not create user, please check your input and try again later."
+      );
+      setIsAuthenticating(false);
     }
-    setIsAuthenticating(false);
   }
 
   if (isAuthenticating) {
