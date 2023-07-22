@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_KEY = "AIzaSyCcPmSmLuLb6Tpjo4J5eD_maEKTT78o0S8";
+const API_KEY = "";
 
 async function authenticate(mode, email, password) {
   const response = await axios.post(
@@ -12,13 +12,13 @@ async function authenticate(mode, email, password) {
     }
   );
 
-  console.log(response.data);
+  return response.data.idToken;
 }
 
 export async function login(email, password) {
-  await authenticate("signInWithPassword", email, password);
+  return authenticate("signInWithPassword", email, password);
 }
 
 export async function createUser(email, password) {
-  await authenticate("signUp", email, password);
+  return authenticate("signUp", email, password);
 }
