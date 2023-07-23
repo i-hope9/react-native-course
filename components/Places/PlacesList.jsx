@@ -1,5 +1,32 @@
-import { FlatList } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
+import PlaceItem from "./PlaceItem";
 
 export default function PlacesList({ places }) {
-  return <FlatList data={places} keyExtractor={(place) => place.id} />;
+  if (!places || places.length === 0) {
+    return (
+      <View style={styles.fallbackContainer}>
+        <Text style={styles.fallbackText}>
+          아직 추가된 장소가 없습니다. 장소를 추가해보세요!
+        </Text>
+      </View>
+    );
+  }
+  return (
+    <FlatList
+      data={places}
+      keyExtractor={(item) => item.id}
+      renderItem={({ item }) => <PlaceItem place={item} />}
+    />
+  );
 }
+
+const styles = StyleSheet.create({
+  fallbackContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  fallbackText: {
+    fontSize: 16,
+  },
+});
