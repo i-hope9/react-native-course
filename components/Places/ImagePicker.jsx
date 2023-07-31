@@ -19,7 +19,7 @@ export default function ImagePicker() {
     }
 
     if (status.granted === PermissionStatus.DENIED) {
-      Alert.alert("권한이 없습니다.");
+      Alert.alert("카메라 접근 권한이 없습니다.");
       return false;
     }
 
@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: Colors.primary100,
     borderRadius: 4,
+    overflow: "hidden",
   },
   image: {
     height: "100%",

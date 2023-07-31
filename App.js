@@ -5,6 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import IconButton from "./components/UI/IconButton";
 import { Colors } from "./constants/Colors";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Map from "./screens/Map";
 
 const Stack = createNativeStackNavigator();
 
@@ -39,6 +40,11 @@ export default function App() {
             name="AddPlace"
             component={AddPlace}
             options={{ title: "최애 공간 추가" }}
+          />
+          <Stack.Screen
+            name="Map"
+            component={Map}
+            options={{ title: "지도" }}
           />
         </Stack.Navigator>
       </NavigationContainer>
