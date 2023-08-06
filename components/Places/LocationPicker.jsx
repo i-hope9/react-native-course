@@ -14,7 +14,7 @@ import {
   useRoute,
 } from "@react-navigation/native";
 
-export default function LocationPicker() {
+export default function LocationPicker({ onPickLocation }) {
   const [status, requestPermission] = useForegroundPermissions();
   const [pickedLocation, setPickedLocation] = useState();
   const navigation = useNavigation();
@@ -30,6 +30,10 @@ export default function LocationPicker() {
       setPickedLocation(mapPickedLocation);
     }
   }, [route, isFocused]);
+
+  useEffect(() => {
+    onPickLocation(pickedLocation);
+  }, [pickedLocation, onPickLocation]);
 
   async function verifyPermissions() {
     if (status.status === PermissionStatus.UNDETERMINED) {

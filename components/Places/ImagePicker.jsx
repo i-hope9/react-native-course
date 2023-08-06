@@ -8,7 +8,7 @@ import { useState } from "react";
 import { Colors } from "../../constants/Colors";
 import OutlinedButton from "../UI/OutlinedButton";
 
-export default function ImagePicker() {
+export default function ImagePicker({ onTakeImage }) {
   const [status, requestPermission] = useCameraPermissions();
   const [pickedImage, setPickedImage] = useState();
 
@@ -37,8 +37,8 @@ export default function ImagePicker() {
       aspect: [16, 9],
       quality: 0.5,
     });
-    console.log(image.assets[0]);
     setPickedImage(image.assets[0].uri);
+    onTakeImage(image.assets[0].uri);
   }
 
   let imagePreview = <Text>추가된 사진이 없습니다.</Text>;
