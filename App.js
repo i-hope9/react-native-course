@@ -6,10 +6,44 @@ import IconButton from "./components/UI/IconButton";
 import { Colors } from "./constants/Colors";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Map from "./screens/Map";
+import { useCallback, useEffect, useState } from "react";
+import { init } from "./util/database";
+import AppLoading from "expo-app-loading";
+import * as SplashScreen from "expo-splash-screen";
 
 const Stack = createNativeStackNavigator();
 
+// Keep the splash screen visible while we fetch resources
+// SplashScreen.preventAutoHideAsync();
+
 export default function App() {
+  const [dbInitialized, setDbInitialized] = useState(false);
+
+  useEffect(() => {
+    init()
+      .then(() => {
+        setDbInitialized(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  // const onLayoutRootView = useCallback(async () => {
+  //   if (dbInitialized) {
+  //     // This tells the splash screen to hide immediately! If we call this after
+  //     // `setAppIsReady`, then we may see a blank screen while the app is
+  //     // loading its initial state and rendering its first pixels. So instead,
+  //     // we hide the splash screen once we know the root view has already
+  //     // performed layout.
+  //     await SplashScreen.hideAsync();
+  //   }
+  // }, [dbInitialized]);
+
+  // if (!dbInitialized) {
+  //   return null;
+  // }
+
   return (
     <>
       <StatusBar style="dark" />
