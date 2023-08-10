@@ -10,6 +10,7 @@ import { useCallback, useEffect, useState } from "react";
 import { init } from "./util/database";
 import AppLoading from "expo-app-loading";
 import * as SplashScreen from "expo-splash-screen";
+import PlaceDetails from "./screens/PlaceDetails";
 
 const Stack = createNativeStackNavigator();
 
@@ -79,6 +80,11 @@ export default function App() {
             name="Map"
             component={Map}
             options={{ title: "지도" }}
+          />
+          <Stack.Screen
+            name="PlaceDetails"
+            component={PlaceDetails}
+            options={{ title: "최애 공간..." }}
           />
         </Stack.Navigator>
       </NavigationContainer>
